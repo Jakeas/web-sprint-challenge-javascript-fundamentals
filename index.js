@@ -29,12 +29,15 @@ Due to closure the child can inherit from the parent so in this case the nested 
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
 function summation(num) {
-  num = 0
-  for(let i=0; i < num; i++){
-  num += num
+  let counter = 0
+  for(let i=0; i <= num; i++){
+  console.log("T2 Num[i]", num[i])  
+  counter += i
   }
-   
+  console.log("T2 Counter:", counter)
+  return counter
 } 
+console.log("T2 Summation:",summation(4))
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -75,8 +78,8 @@ const zooAnimals = [
   */
 
   function lowerCaseNames(){
-    zooAnimals.map(function(item){
-      let lower = item.animal_name.toLowerCase()
+    let lower = zooAnimals.map(function(item){
+       return item.animal_name.toLowerCase()
     })
     return lower
   }
@@ -88,11 +91,10 @@ const zooAnimals = [
   */
 
   function lowPopulationAnimals(){
-    zooAnimals.filter(function(item){
-      if(item.population < 5){
-        return
-      }
+   let filtered = zooAnimals.filter(function(item){
+      return item.population < 5
     })
+    return filtered
   }
   
 
@@ -102,8 +104,11 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(){
+   const pop = zooAnimals.reduce(function(accum, item){
+        return accum += item.population
+    }, 0)
+    return pop
   }
   
   
